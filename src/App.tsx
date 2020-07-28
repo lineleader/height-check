@@ -2,9 +2,26 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Input from "./Input";
+import Result from "./Result";
+import { heights, parse, asHeight } from "./heights";
 
 function App() {
   const [height, setHeight] = useState("");
+
+  const parsedHeight = parse(height);
+
+  const canRide = heights
+    .filter(attraction => attraction.height <= parsedHeight)
+    .map(attraction => (
+      <Result key={attraction.name} canRide={true} {...attraction} />
+    ));
+
+  const cantRide = heights
+    .filter(attraction => attraction.height > parsedHeight)
+    .map(attraction => (
+      <Result key={attraction.name} canRide={false} {...attraction} />
+    ));
+
   return (
     <AppWrapper>
       <AppHeader>
@@ -16,9 +33,15 @@ function App() {
           name="height"
           value={height}
           onChange={setHeight}
-          placeholder='42 or 3&amp; 6"'
+          placeholder={`42 or 3' 6"`}
         />
-        <pre>{height}</pre>
+        {parsedHeight > -1 && (
+          <>
+            <pre>{asHeight(parsedHeight)}</pre>
+            {canRide}
+            {cantRide}
+          </>
+        )}
       </AppBody>
     </AppWrapper>
   );
@@ -41,4 +64,8 @@ const AppHeader = styled.header`
   font-size: calc(10px + 2vmin);
 `;
 
-const AppBody = styled.div``;
+const AppBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

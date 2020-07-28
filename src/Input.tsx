@@ -46,8 +46,12 @@ Input.defaultProps = {
 export default Input;
 
 const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+
   label {
-    display: block;
     text-align: left;
   }
 `;
