@@ -52,6 +52,6 @@ const InputGroup = styled.div`
   width: max-content;
 
   label {
-    text-align: left;
+    margin-bottom: 0.25rem;
   }
 `;

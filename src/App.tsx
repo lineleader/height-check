@@ -4,23 +4,20 @@ import styled from "styled-components";
 import Input from "./Input";
 import Result from "./Result";
 import { heights, parse, asHeight } from "./heights";
+import { isRideable } from "./rideable";
 
 function App() {
   const [height, setHeight] = useState("");
 
   const parsedHeight = parse(height);
 
-  const canRide = heights
-    .filter(attraction => attraction.height <= parsedHeight)
-    .map(attraction => (
-      <Result key={attraction.name} canRide={true} {...attraction} />
-    ));
-
-  const cantRide = heights
-    .filter(attraction => attraction.height > parsedHeight)
-    .map(attraction => (
-      <Result key={attraction.name} canRide={false} {...attraction} />
-    ));
+  const results = heights.map(attraction => (
+    <Result
+      key={attraction.name}
+      canRide={isRideable(parsedHeight, attraction.height)}
+      {...attraction}
+    />
+  ));
 
   return (
     <AppWrapper>
@@ -36,11 +33,16 @@ function App() {
           placeholder={`42 or 3' 6"`}
         />
         {parsedHeight > -1 && (
-          <>
-            <pre>{asHeight(parsedHeight)}</pre>
-            {canRide}
-            {cantRide}
-          </>
+          <ResultsWrapper>
+            <p>
+              {parsedHeight > 0 ? (
+                <>At {asHeight(parsedHeight)}, you can ride...</>
+              ) : (
+                <>&nbsp;</>
+              )}
+            </p>
+            {results}
+          </ResultsWrapper>
         )}
       </AppBody>
     </AppWrapper>
@@ -68,4 +70,10 @@ const AppBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const ResultsWrapper = styled.div`
+  margin-top: 1rem;
+  max-width: 800px;
+  text-align: left;
 `;
