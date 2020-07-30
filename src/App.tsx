@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import GlobalStyles from "./globalStyles";
+
 import Input from "./Input";
 import Result from "./Result";
 import { heights, parse, asHeight } from "./heights";
@@ -20,32 +22,35 @@ function App() {
   ));
 
   return (
-    <AppWrapper>
-      <AppHeader>
-        <h1>Walt Disney World Ride Height Calculator</h1>
-      </AppHeader>
-      <AppBody>
-        <Input
-          label="Enter your (child's) height:"
-          name="height"
-          value={height}
-          onChange={setHeight}
-          placeholder={`42 or 3' 6"`}
-        />
-        {parsedHeight > -1 && (
-          <ResultsWrapper>
-            <p>
-              {parsedHeight > 0 ? (
-                <>At {asHeight(parsedHeight)}, you can ride...</>
-              ) : (
-                <>&nbsp;</>
-              )}
-            </p>
-            {results}
-          </ResultsWrapper>
-        )}
-      </AppBody>
-    </AppWrapper>
+    <>
+      <GlobalStyles />
+      <AppWrapper>
+        <AppHeader>
+          <h1>Walt Disney World Ride Height Calculator</h1>
+        </AppHeader>
+        <AppBody>
+          <Input
+            label="Enter your (child's) height:"
+            name="height"
+            value={height}
+            onChange={setHeight}
+            placeholder={`42 or 3' 6"`}
+          />
+          {parsedHeight > -1 && (
+            <ResultsWrapper>
+              <p>
+                {parsedHeight > 0 ? (
+                  <>At {asHeight(parsedHeight)}, you can ride...</>
+                ) : (
+                  <>&nbsp;</>
+                )}
+              </p>
+              {results}
+            </ResultsWrapper>
+          )}
+        </AppBody>
+      </AppWrapper>
+    </>
   );
 }
 
