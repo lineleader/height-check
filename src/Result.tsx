@@ -11,10 +11,12 @@ interface ResultProps {
   height: number;
   park: string;
   canRide: Rideable;
+  diff: number;
 }
 
 const Result = (props: ResultProps) => {
-  const { name, height, park, canRide } = props;
+  const { name, height, diff, park, canRide } = props;
+  const displayHeight = asHeight(height);
   return (
     <ThemeProvider theme={getTheme(canRide)}>
       <ResultContainer>
@@ -22,13 +24,18 @@ const Result = (props: ResultProps) => {
           <h2>{name}</h2>
           <p>{park}</p>
         </Names>
-        <Height>
-          {canRide === Rideable.Neutral
-            ? asHeight(height)
-            : canRide === Rideable.Yes
-            ? "Yes!"
-            : "Not yet"}
-        </Height>
+        <Height>{displayHeight}</Height>
+        <Status>
+          {canRide === Rideable.Neutral ? (
+            <>&ndash;</>
+          ) : canRide === Rideable.Yes ? (
+            "Yes!"
+          ) : (
+            <div>
+              Not yet<Small>{asHeight(diff)} needed</Small>
+            </div>
+          )}
+        </Status>
       </ResultContainer>
     </ThemeProvider>
   );
@@ -37,6 +44,7 @@ const Result = (props: ResultProps) => {
 Result.propTypes = {
   name: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
+  diff: PropTypes.number.isRequired,
   park: PropTypes.string.isRequired,
   canRide: PropTypes.oneOf([Rideable.Neutral, Rideable.Yes, Rideable.No])
     .isRequired,
@@ -46,7 +54,7 @@ export default Result;
 
 const ResultContainer = styled(ListItem)`
   display: grid;
-  grid-template-columns: 8fr 1fr;
+  grid-template-columns: 8fr 2fr 2fr;
   column-gap: 1rem;
 
   border-top: 8px solid ${props => props.theme.color};
@@ -81,20 +89,6 @@ const Names = styled.div`
   }
 `;
 
-const Height = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.color};
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    margin-top: 1rem;
-  }
-`;
-
 const neutralTheme = {
   color: "gainsboro",
 };
@@ -116,3 +110,27 @@ const themes = {
 const getTheme = (canRide: Rideable) => {
   return themes[canRide];
 };
+
+const Height = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${neutralTheme.color};
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
+`;
+
+const Status = styled(Height)`
+  background-color: ${props => props.theme.color};
+`;
+
+const Small = styled.div`
+  font-size: 0.95rem;
+  opacity: 0.75;
+  font-style: italics;
+`;

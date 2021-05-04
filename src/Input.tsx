@@ -21,6 +21,7 @@ const Input = (props: InputProps) => {
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
+        autoFocus
       />
     </InputGroup>
   );
@@ -50,8 +51,13 @@ const InputGroup = styled.div`
   flex-direction: column;
   align-items: center;
   width: max-content;
+  font-size: 1.5rem;
 
   label {
     margin-bottom: 0.25rem;
+  }
+
+  input {
+    font-size: 1.75rem;
   }
 `;

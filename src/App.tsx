@@ -7,6 +7,7 @@ import Input from "./Input";
 import Result from "./Result";
 import { heights, parse, asHeight } from "./heights";
 import { isRideable } from "./rideable";
+import AppFooter from "./AppFooter";
 
 function App() {
   const [height, setHeight] = useState("");
@@ -18,6 +19,7 @@ function App() {
       key={attraction.name}
       canRide={isRideable(parsedHeight, attraction.height)}
       {...attraction}
+      diff={attraction.height - parsedHeight}
     />
   ));
 
@@ -49,6 +51,7 @@ function App() {
             </ResultsWrapper>
           )}
         </AppBody>
+        <AppFooter />
       </AppWrapper>
     </>
   );

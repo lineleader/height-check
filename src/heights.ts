@@ -80,7 +80,7 @@ export const heights = [
     park: "Disney's Hollywood Studios",
   },
   {
-    name: "DONOESAUR",
+    name: "DINOSAUR",
     height: 40,
     park: "Disney's Animal Kingdom Park",
   },
@@ -115,11 +115,6 @@ export const heights = [
     park: "Disney's Typhoon Lagoon Water Park",
   },
   {
-    name: "Ketchakiddee Creek",
-    height: 48,
-    park: "Disney's Typhoon Lagoon Water Park",
-  },
-  {
     name: "Downhill Double Dipper",
     height: 48,
     park: "Disney's Blizzard Beach Water Park",
@@ -135,19 +130,9 @@ export const heights = [
     park: "Disney's Blizzard Beach Water Park",
   },
   {
-    name: "Tike's Peak",
-    height: 48,
-    park: "Disney's Blizzard Beach Water Park",
-  },
-  {
     name: "Tomorrowland Speedway (own car)",
     height: 54,
     park: "Magic Kingdom Park",
-  },
-  {
-    name: "Bay Slides",
-    height: 60,
-    park: "Disney's Typhoon Lagoon Water Park",
   },
 ];
 
