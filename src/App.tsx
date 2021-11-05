@@ -28,6 +28,9 @@ function App() {
       <GlobalStyles />
       <AppWrapper>
         <AppHeader>
+          <a href="https://lineleader.io">
+            <img src="/logo-white.png" />
+          </a>
           <h1>Walt Disney World Ride Height Calculator</h1>
         </AppHeader>
         <AppBody>
@@ -72,6 +75,15 @@ const AppHeader = styled.header`
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  padding-top: 2rem;
+
+  img {
+    transition: filter 0.1s ease-in-out;
+  }
+
+  img:hover {
+    filter: drop-shadow(0.1rem 0.2rem 0.5rem rgba(255, 255, 255, 0.25));
+  }
 `;
 
 const AppBody = styled.div`
