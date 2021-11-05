@@ -29,7 +29,7 @@ function App() {
       <AppWrapper>
         <AppHeader>
           <a href="https://lineleader.io">
-            <img src="/logo-white.png" />
+            <img src="/logo-white.png" alt="LineLeader logo" />
           </a>
           <h1>Walt Disney World Ride Height Calculator</h1>
         </AppHeader>
