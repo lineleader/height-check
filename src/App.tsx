@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import GlobalStyles from "./globalStyles";
+import GlobalStyles from './globalStyles';
 
-import Input from "./Input";
-import Result from "./Result";
-import { heights, parse, asHeight } from "./heights";
-import { isRideable } from "./rideable";
-import AppFooter from "./AppFooter";
+import Input from './Input';
+import Result from './Result';
+import { heights, parse, asHeight } from './heights';
+import { isRideable } from './rideable';
+import AppFooter from './AppFooter';
 
 function App() {
-  const [height, setHeight] = useState("");
+  const [height, setHeight] = useState('');
 
   const parsedHeight = parse(height);
 
-  const results = heights.map(attraction => (
+  const results = heights.map((attraction) => (
     <Result
       key={attraction.name}
       canRide={isRideable(parsedHeight, attraction.height)}
