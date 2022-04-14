@@ -85,6 +85,11 @@ export const heights = [
     park: "Disney's Animal Kingdom Park",
   },
   {
+    name: "Guardians of the Galaxy: Cosmic Rewind",
+    height: 42,
+    park: "Epcot",
+  },
+  {
     name: "Space Mountain",
     height: 44,
     park: "Magic Kingdom Park",
