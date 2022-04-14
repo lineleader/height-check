@@ -32,7 +32,7 @@ const Result = (props: ResultProps) => {
             "Yes!"
           ) : (
             <div>
-              Not yet<Small>{asHeight(diff)} needed</Small>
+              Not yet<Small>{asHeight(diff)} to grow</Small>
             </div>
           )}
         </Status>
