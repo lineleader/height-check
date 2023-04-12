@@ -135,6 +135,11 @@ export const heights = [
     park: "Disney's Blizzard Beach Water Park",
   },
   {
+    name: "TRON Lightcycle / Run",
+    height: 48,
+    park: "Magic Kingdom Park",
+  },
+  {
     name: "Tomorrowland Speedway (own car)",
     height: 54,
     park: "Magic Kingdom Park",
