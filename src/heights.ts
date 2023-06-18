@@ -45,11 +45,6 @@ export const heights = [
     park: "Magic Kingdom Park",
   },
   {
-    name: "Splash Mountain",
-    height: 40,
-    park: "Magic Kingdom Park",
-  },
-  {
     name: "Mission: SPACE",
     height: 40,
     park: "Epcot",
